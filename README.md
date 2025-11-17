@@ -79,9 +79,13 @@ redis-server
 ### 8. Generate passport key for Application
 
 ```
-php artisan passport:client --personal```
- 
+php artisan passport:client --personal
+ What should we name the personal access client? [Laravel Personal Access Client]:
+ > sunnah
+ ```
+
 ### 9. Run the Application
+
 ```
 php artisan serve
 ```

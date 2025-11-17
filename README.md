@@ -76,7 +76,11 @@ Run the redis-server command to start the Redis server:
 redis-server
 ```
 
+### 8. Generate passport key for Application
 
+```
+php artisan passport:client --personal```
+ 
 ### 9. Run the Application
 ```
 php artisan serve

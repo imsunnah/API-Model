@@ -1,308 +1,59 @@
-# Api Development Model
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-This project is a RESTful API development kit using **Laravel** to help with your api development process and manage**users**, **roles**, and **permissions** with secure authentication via **Laravel Passport**. It is designed with scalable architecture and the **Repository Pattern** for maintainable and testable code.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Table of Contents
-- [Technologies used](#technologies-used)
-- [How to Run the Application Locally](#how-to-run-the-application-locally)
-- [Application Process Flow](#application-process-flow)
-- [API Endpoints](#api-endpoints)
-- [Postman Collection](#postman-collection)
+## About Laravel
 
-## Features
-- PHP "^8.2"
-- Laravel "^11.31"
-- Laravel Passport "^12.0"
-- Laravel Sanctum "^4.0"
-- Laravel Telescope "^5.3" - [Laravel Telescope](https://laravel.com/docs/telescope)
-- Laravel Predis "2.0"
-- Laravel Api Toolkit (Package) "^2.1" [API Toolkit](https://laravelapitoolkit.com/)
-- Laravel Scramble (Package) "^0.12.2" [Scramble Docs](https://scramble.dedoc.co/)
-- MySQL
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## How to Run the Application Locally
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Follow the steps below to set up and run the application on your local machine.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-### 1. Clone the Repository
-First, clone the repository to your local machine:
+## Learning Laravel
 
-### 2. Install Dependencies
-Install the necessary PHP dependencies using Composer:
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-```
-composer install
-```
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### 3. Set Up Environment
-Copy the `.env.example` file to `.env`:
+## Laravel Sponsors
 
-### 4. Configure Database
-Open the `.env` file and configure your database connection settings:
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-```
-[ Note: Use your database configuration. ]
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=api_dev_model 
-DB_USERNAME=root
-DB_PASSWORD=
-```
+### Premium Partners
 
-### 5. Migrate Database
-```
-php artisan migrate
-```
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-### 6. Seed the Database
-[ Note: While seeding the database, you should change the admin credentials for the default admin user. You can find the credentials in the \database\seeders\DatabaseSeeder.php file. ]
+## Contributing
 
-```
-php artisan db:seed
-```
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### 7. Generate Application Key
-Generate the application key by running:
+## Code of Conduct
 
-```
-php artisan key:generate
-```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-### 8. Run the Redis Server Application
-Run the redis-server command to start the Redis server:
+## Security Vulnerabilities
 
-```
-redis-server
-```
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### 8. Generate passport key for Application
+## License
 
-```
-php artisan passport:client --personal
- What should we name the personal access client? [Laravel Personal Access Client]:
- > sunnah
- ```
-
-### 9. Run the Application
-
-```
-php artisan serve
-```
-
-
-## Application Process Flow
-
-The applications process flow can be defined as two parts. There is an admin panel in the backend to maintain user authentication and role permission. There are some great additional features that are added to the backend admin panel.
-
-### Admin panel
-To login to the admin panel. There is a default admin credentials given using which you can access the admin panel.
-
-Credentials:
-- Username: `admin@atilimited.net`
-- Password: `admin123456`
-
-[ Note: The admin panel is not secured. You can change the admin credentials before you seed the database. You can find the credentials in the \database\seeders\DatabaseSeeder.php file path. ]
-
-### 1. User section
-In the user section you can register a new user and edit the existing users.
-
-### 2. Role section
-In the role section you can create new roles and edit the existing roles.
-
-### 3. Permission section
-In the permission section you can create new permissions and edit the existing permissions.
-
-### 4. Role and Permission assignment
-In the role and permission assignment section you can assign roles and permissions to users.
-
-### 5. Telescope
-Telescope is a tool that provides a dashboard for monitoring and debugging your Laravel applications. It provides insights into the performance of your application, including database queries, cache hits, and more. You can access the Telescope dashboard by visiting the telescope section in your applications admin panel.
-
-
-### User authentication and role permission management structure
-
-### 1. User Authentication
-- **User Registration**: A user can register by providing their name, email, and password.
-- **Login**: After registering, the user can log in by providing their email and password. On successful login, the system will issue an API token for authentication via **Laravel Passport**.
-
-### 2. Role Management
-- **Create Roles**: Admins can create roles like "Admin", "Editor", etc.
-- **Assign Roles**: Admins can assign multiple roles to a user.
-- **Role-Based Access Control**: Permissions are defined based on roles. When users are assigned roles, they inherit the permissions associated with those roles.
-
-### 3. Permission Management
-- **Create Permissions**: Permissions like "view_posts", "edit_posts", etc., are created.
-- **Assign Permissions**: Permissions can be assigned directly to users or inherited from roles.
-- **Permission Checking**: Before accessing specific routes, the middleware checks whether the authenticated user has the required permissions, either directly or through roles.
-
-### 4. Assigning Roles and Permissions
-- **Assign Roles to Users**: Admin can assign roles to users to provide access to specific actions.
-- **Assign Permissions to Roles**: Roles can have permissions assigned that define the actions users in that role can perform.
-- **Direct Permission Assignment**: Permissions can be assigned directly to users, allowing fine-grained control.
-
-### 5. Middleware for Authorization
-- **Middleware**: A middleware verifies if the authenticated user has the required permissions to access protected routes. It ensures secure and restricted access to certain API endpoints.
-
-
-## API Endpoints
-
-### Authentication
-
-#### Dummy Admin: `admin@atilimited.net`
-#### Dummy Password: `admin123456`
-
-#### Postman Process Flow
-
-#### 1. Register User
-- **Endpoint**: `POST /api/register`
-- **Body**:
-
-```
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "password",
-  "password_confirmation": "password"
-}
-```
-
-
-#### 2. Login User
-- **Endpoint**: `POST /api/login`
-- **Body**:
-
-```
-{
-  "email": "john@example.com",
-  "password": "password"
-}
-```
-### Role Management
-
-#### 1. Create Role
-- **Endpoint**: `POST /api/roles`
-- **Headers**:
-  - `Authorization`: `Bearer <your-access-token>`
-- **Body**:
-
-```
-{
-  "name": "Editor"
-}
-```
-#### 2. List Roles
-- **Endpoint**: `GET /api/roles`
-- **Headers**:
-  - `Authorization`: `Bearer <your-access-token>`
-
----
-
-### Permission Management
-
-#### 1. Create Permission
-- **Endpoint**: `POST /api/permissions`
-- **Headers**:
-  - `Authorization`: `Bearer <your-access-token>`
-- **Body**:
-
-```
-{
-  "name": "edit_posts"
-}
-```
-
-#### 2. List Permissions
-- **Endpoint**: `GET /api/permissions`
-- **Headers**:
-  - `Authorization`: `Bearer <your-access-token>`
-
-
-#### 3. Assign Role to User
-- **Endpoint**: `POST /api/users/{user_id}/assign-role`
-- **Headers**:
-  - `Authorization`: `Bearer <your-access-token>`
-- **Body**:
-```
-{
-  "role": "Super Admin"
-}
-```
-
-#### 4. Assign Permission to Role
-- **Endpoint**: `POST /api/roles/{role_id}/assign-permission`
-- **Body**:
-
-```
-{
-  "permission": "edit_posts"
-}
-```
-
-### Testing API's (Generated by api toolkit)
-#### 1. Get all users (Paginated)
-- **Endpoint**: `GET /api/customers`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-
-#### 2. Get Customer by ID
-- **Endpoint**: `GET /api/customers/{id}`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-
-#### 3. Search Customers by Attributes
-- **Endpoint**: `GET /api/customers`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-- **Perameters**:
-```
-{
-  "name": "John Doe"
-}
-```
-
-#### 4. Add Customer
-- **Endpoint**: `POST /api/customers`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-- **body**:
-```
-{
-  "name": "Test Customer",
-  "age": 22,
-  "gender": "male"
-}
-```
-
-#### 5. Update Customer
-- **Endpoint**: `PUT /api/customers/{id}`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-- **Perameters**:
-```
-{
-  "name": "Test Customer",
-  "age": 22,
-  "gender": "male"
-}
-```
-
-#### 5. Delete Customer
-- **Endpoint**: `DELETE /api/customers/{id}`
-- **Headers**:
-  - `Accept`: `application/json`
-  - `Authorization`: `Bearer <your-access-token>`
-
-## Postman Collection
-
-A Postman collection has been provided for testing the API. It includes requests for:
-
-- **Authentication** (register, login).
-- **Role and Permission management** (create, list).
-- **Assigning roles and permissions to users**.
-- **Testing api's for customer's**.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
